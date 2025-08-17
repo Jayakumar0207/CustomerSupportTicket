@@ -1,0 +1,59 @@
+<div class="login-wrapper">
+  <div class="login-image">
+    <img src="assets/support-team.jpg" alt="Customer Support" />
+  </div>
+  
+  <div class="login-form-container">
+    <app-navbar></app-navbar>
+      <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()" class="login-form" novalidate>
+      <h2>Create New Ticket</h2>
+
+      <label for="title">Title</label>
+      <input
+        id="title"
+        type="text"
+        formControlName="title"
+        placeholder="Enter ticket title"
+        autocomplete="off"
+      />
+      <div class="error" *ngIf="ticketForm.get('title')?.invalid && ticketForm.get('title')?.touched">
+        <small *ngIf="ticketForm.get('title')?.errors?.['required']">Title is required</small>
+        <small *ngIf="ticketForm.get('title')?.errors?.['minlength']">Minimum 3 characters</small>
+      </div>
+
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        placeholder="Enter detailed description"
+        rows="5"
+      ></textarea>
+      <div
+        class="error"
+        *ngIf="ticketForm.get('description')?.invalid && ticketForm.get('description')?.touched"
+      >
+        <small *ngIf="ticketForm.get('description')?.errors?.['required']">Description is required</small>
+        <small *ngIf="ticketForm.get('description')?.errors?.['minlength']">
+          Minimum 10 characters
+        </small>
+      </div>
+
+      <label for="priority">Priority</label>
+      <select id="priority" formControlName="priority">
+        <option value="" disabled>Select priority</option>
+        <option *ngFor="let p of priorities" [value]="p">{{ p }}</option>
+      </select>
+      <div
+        class="error"
+        *ngIf="ticketForm.get('priority')?.touched && ticketForm.get('priority')?.invalid"
+      >
+        <small *ngIf="ticketForm.get('priority')?.errors?.['required']">Priority is required</small>
+      </div>
+      <label for="status">Status</label>
+      <select id="status" formControlName="status">        
+        <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
+      </select>      
+      <button type="submit" [disabled]="ticketForm.invalid">Create Ticket</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="login-wrapper">
+  <div class="login-image">
+    <img src="assets/support-team.jpg" alt="Customer Support" />
+  </div>
+
+  <div class="login-form-container">
+    <app-navbar></app-navbar>
+
+    <div class="login-form">
+      <h2>Ticket List</h2>
+
+      <!-- Filter Section -->
+      <div class="filter-row">
+        <label for="priority">Priority</label>
+        <select id="priority" [(ngModel)]="selectedPriority" (change)="applyFilters()">
+          <option value="">All</option>
+          <option *ngFor="let p of priorities" [value]="p">{{ p }}</option>
+        </select>
+
+        <label for="status">Status</label>
+        <select id="status" [(ngModel)]="selectedStatus" (change)="applyFilters()">
+          <option value="">All</option>
+          <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
+        </select>
+      </div>
+
+      <!-- Table -->
+      <div>
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Priority</th>
+              <th>Status</th>
+              <th>Created</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ticket of paginatedTickets">
+              <td>{{ ticket.title }}</td>
+              <td>{{ ticket.description }}</td>
+              <td>{{ ticket.priority }}</td>
+              <td>{{ ticket.status }}</td>
+              <td>{{ ticket.createdDate | date: 'short' }}</td>
+               <td>
+                <a [routerLink]="['/ticket-details', ticket.id]">Ticket Details</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination-controls" *ngIf="totalPages > 1" style="margin-top: 20px;">
+        <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Prev</button>
+        <span>Page {{ currentPage }} of {{ totalPages }}</span>
+        <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+      </div>
+    </div>
+  </div>
+</div>

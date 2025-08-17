@@ -1,0 +1,163 @@
+.login-wrapper {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  gap: 20px;
+}
+
+/* Left image section */
+.login-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  overflow: hidden;
+}
+
+.login-image img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  display: block;
+}
+
+/* Right form section */
+.login-form-container {
+  flex: 1;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding-left: 40px;
+ 
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form h2 {
+  margin-bottom: 24px;
+  text-align: center;
+  color: #333;
+}
+
+.login-form label {
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #444;
+}
+
+.login-form input,
+.login-form select,
+.login-form textarea {
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+  resize: vertical;
+}
+
+.login-form input:focus,
+.login-form select:focus,
+.login-form textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.error small {
+  color: red;
+  font-size: 12px;
+}
+
+.login-form button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-form button:disabled {
+  background-color: #a0c4ff;
+  cursor: not-allowed;
+}
+.filter-row {
+  display: flex;
+  align-items: center; 
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap; 
+}
+
+.filter-item {
+  display: flex;
+  flex-direction: column;
+}
+table {
+  width: auto;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+th, td {
+  padding: 15px;
+  border: 2px solid #ddd;
+  text-align: left;
+  white-space: normal; /* allow wrapping */
+  word-wrap: break-word; /* break long words */
+  vertical-align: top; /* align text to top of cell */
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+th.title, td.title {
+  width: 150px;
+  white-space: nowrap;
+}
+
+th.description, td.description {
+  width: 300px;
+}
+th.ticketdetail, td.ticketdetail {
+  width: 200px;
+  white-space: nowrap;
+}
+
+.pagination-controls button {
+  padding: 6px 12px;        /* smaller buttons */
+  font-size: 14px;          /* smaller font */
+  margin: 0 8px;            /* space on left and right of buttons */
+  border-radius: 6px;       /* rounded corners */
+  cursor: pointer;
+}
+
+.pagination-controls span {
+  margin: 0 8px;            /* space on left and right of the page text */
+  font-weight: bold;
+  vertical-align: middle;   /* align vertically with buttons */
+}
+@media (max-width: 768px) {
+  .login-wrapper {
+    flex-direction: column;
+  }
+
+  .login-image {
+    height: 250px;
+  }
+
+  .login-form-container {
+    padding: 20px;
+  }
+}
